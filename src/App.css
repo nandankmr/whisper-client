@@ -1,38 +1,343 @@
-.App {
-  text-align: center;
+.top-container {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 20px; */
+  height: 100%;
+  background-color: #e6fae8;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("images/wave.png");
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.eachChat {
+  padding: 4px;
+  margin: 5px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 10px 10px 10px 0;
+  box-shadow: rgb(114 114 114 / 25%) 0px 1px 2px;
+  max-width: 80%;
+  width: fit-content;
+  font-size: larger;
+  color: #202020;
+}
+.scrollDiv {
+  background: url("images/scroll.png");
+  height: 45px;
+  width: 45px;
+  bottom: 20px;
+  right: 15px;
+  border-radius: 50%;
+  background-color: #90f587;
+  background-position: center;
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  align-items: center;
+  transform: rotate(90deg);
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: rgb(149 160 193) 1px 2px 7px 1px;
+  opacity: 0.9;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.scrollDiv:active {
+  transition: all 0.1s ease-in-out;
+
+  transform: scale(0.9) rotate(110deg) !important;
+  opacity: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mainContainer {
+  display: flex;
+  background: #fdfdfd;
+  flex-grow: 1;
+  margin: 20px;
+  max-width: 1024px;
+  min-width: 50vw;
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 6%), 0 2px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.conversation {
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+}
+
+.conversation-header {
+  height: 59px;
+  background: #e1e1e1;
+}
+
+.sidebar {
+  border-right: 1px solid #eee;
+  flex: 1 1;
   display: flex;
   flex-direction: column;
+}
+
+.dashboard .helper-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #4d4d4d;
+}
+
+.dashboard {
+  flex: 2;
+  display: flex;
+}
+
+.userHeader {
+  width: 100%;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.userIcon {
+  width: 35px;
+  height: 35px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-radius: 50%;
+  background: #219ddb;
+  color: #fff;
+  margin: 0 5px;
+  text-transform: capitalize;
 }
 
-.App-link {
-  color: #61dafb;
+.each-contact {
+  color: #555;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  flex-grow: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login {
+  background-color: #fff;
+  flex-direction: column;
+  display: flex;
+  height: 500px;
+  width: 450px;
+  margin-top: 50px;
+  padding: 0 3%;
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 6%), 0 2px 5px 0 rgb(0 0 0 / 20%);
 }
+
+.login-header {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  /* margin-bottom: 35px; */
+  border-bottom: 1px solid #ddd;
+}
+
+.login .label {
+  font-size: 22px;
+  margin: 35px 0 0;
+}
+
+.login input {
+  font-size: 16px !important;
+  outline: 0px;
+  width: auto !important;
+  margin: 10px 0 0px !important;
+  padding: 0px 15px !important;
+  border: 1px solid #d5d5d5 !important;
+  border-radius: 4px !important;
+  color: #4d4d4d;
+  background-color: #f1f4f6 !important;
+  height: 50px;
+  transition: all 0.5s;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: 98%;
+  font-family: arial;
+  font-weight: 300;
+}
+
+.button {
+  margin: 30px 0 5px;
+  text-align: center;
+  padding: 15px 0;
+  background: #1f77b2;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 2px 4px 0 rgb(118 125 144 / 33%);
+  cursor: pointer;
+}
+
+.login p {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.login p a {
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+.change-type {
+  font-size: inherit !important;
+  color: rgb(59, 89, 152);
+  cursor: pointer;
+}
+
+.chatContainer {
+  width: 100%;
+  display: block;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: auto;
+  height: fit-content;
+  max-height: 100%;
+}
+
+.error span {
+  position: absolute;
+  margin: 0;
+  color: #f75c57;
+  font-size: 15px;
+  padding-left: 2px;
+  font-weight: 300;
+}
+
+.error {
+  position: relative;
+}
+
+.contactList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.header-options {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 0 8px;
+  background-color: #ededed;
+}
+
+.option-svg {
+  height: 40px;
+  width: 40px;
+  color: #777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.menu-div {
+  position: absolute;
+  padding: 9px 0;
+  right: 4px;
+  top: 4px;
+  border-radius: 3px;
+  color: #4a4a4a;
+  background: #fff;
+  width: 200px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+}
+
+.menu-div div {
+  padding-right: 58px;
+  padding-left: 24px;
+  padding-top: 13px;
+  cursor: pointer;
+  position: relative;
+  height: 40px;
+  box-sizing: border-box;
+  font-size: 14.5px;
+}
+
+.eachContact {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.eachContact:hover {
+  background: #eee;
+}
+
+.suggestedText {
+  padding: 11px 15px;
+  color: #555;
+  font-size: 16px;
+}
+
+li {
+  list-style: none;
+}
+
+/** top level css*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: -webkit-fill-available;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+.emojiDiv {
+  background-image: url("images/emoji.svg");
+  height: 35px;
+  width: 35px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 8px 0 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  /* background-color: #fcfab8; */
+}
+/* 
+.leftSign {
+  height: 5px;
+  width: 5px;
+  background-image: url("images/triangle.svg");
+  position: absolute;
+}
+
+.chat-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+} */

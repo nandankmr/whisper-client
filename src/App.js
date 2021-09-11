@@ -1,23 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import MainContainer from "./components/MainContainer";
+import { useEffect, useState } from "react";
+import LoginOrSignup from "./components/LoginOrSignup";
+import axios from "axios";
 
-function App() {
+function App({socket, ENDPOINT}) {
+  const [loggedIn, setLoggedIn] = useState("login");
+
+  const [token, setToken] = useState(localStorage.getItem("whisper-token"));
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    if (token != null) {
+      localStorage.setItem("whisper-token", token);
+      // Get user data
+      axios
+        .get(`${ENDPOINT}/user/getCurrentUser`, {
+          headers: { "x-auth-token": token },
+        })
+        .then((res) => {
+          console.log(res.data);
+          setCurrentUser(res.data.user);
+        })
+        .catch((err) => {
+          setToken(null);
+        });
+    } else {
+      localStorage.removeItem("whisper-token");
+      setLoggedIn("login");
+    }
+  }, [token, ENDPOINT]);
+
+  useEffect(() => {
+    if (currentUser.username) {
+      setLoggedIn("dashboard");
+      socket.emit("login", currentUser)
+    }
+  }, [currentUser, socket]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="top-container">
+      {loggedIn === "dashboard" ? (
+        <MainContainer
+          currentUser={currentUser}
+          ENDPOINT={ENDPOINT}
+          setToken={setToken}
+          socket={socket}
+          token={token}
+        />
+      ) : (
+        <LoginOrSignup
+          ENDPOINT={ENDPOINT}
+          setToken={setToken}
+          type={loggedIn}
+          setType={setLoggedIn}
+        />
+      )}
     </div>
   );
 }
