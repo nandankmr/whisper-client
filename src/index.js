@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { io } from "socket.io-client";
 
 // Global values
-const ENDPOINT = "http://localhost:8081";
+const ENDPOINT = "https://decisive-honeysuckle-atrociraptor.glitch.me";
 const socket = io(ENDPOINT);
 
 ReactDOM.render(
